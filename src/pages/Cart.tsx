@@ -1,4 +1,19 @@
+import { Link } from "react-router-dom";
+import { Button } from "../components/ui/button";
+
 function Cart() {
-  return <h1 className="text-4xl">Cart</h1>;
+  return (
+    <div>
+      <h1 className="text-6xl">Cart Page</h1>
+      <Link to="/" className="text-7xl text-red-950">
+        Back Home
+      </Link>
+      <div>
+        <Button asChild size="lg">
+          <Link to="/">Home button</Link>
+        </Button>
+      </div>
+    </div>
+  );
 }
 export default Cart;
