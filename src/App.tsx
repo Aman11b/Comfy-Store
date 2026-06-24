@@ -24,6 +24,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Landing />,
         errorElement: <ErrorElement />,
+        loader: async () => {
+          console.log("landing page");
+          return null;
+        },
       },
       {
         path: "products",
