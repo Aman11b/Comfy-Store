@@ -13,7 +13,7 @@ export default function Header() {
   };
   return (
     <header>
-      <div className="align-element flex justify-center sm:justify-end">
+      <div className=" align-element flex justify-center sm:justify-end">
         {user ? (
           <div className="flex gap-x-2 sm:gap-x-8 items-center">
             <p className="text-xs sm:text-sm">Hellpe, {user.username}</p>

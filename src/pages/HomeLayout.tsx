@@ -6,7 +6,9 @@ function HomeLayout() {
     <>
       <Header />
       <nav>Nav</nav>
-      <Outlet />
+      <div className="align-element">
+        <Outlet />
+      </div>
     </>
   );
 }
