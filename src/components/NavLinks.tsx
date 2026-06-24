@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { links } from "../utils";
-import { Label } from "radix-ui";
 
 export default function NavLinks() {
   return (
