@@ -4,8 +4,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+} from "../components/ui/carousel";
+import { Card, CardContent } from "../components/ui/card";
 
 import hero1 from "../assets/hero1.webp";
 import hero2 from "../assets/hero2.webp";
