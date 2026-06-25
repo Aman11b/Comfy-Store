@@ -7,7 +7,7 @@ export default function ProductsList() {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { title, price, image } = product.attributes;
+        const { title, price, image, company } = product.attributes;
         const dollerAmount = formatAsDollars(price);
         return (
           <Link key={product.id} to={`/products/${product.id}`}>
@@ -20,6 +20,7 @@ export default function ProductsList() {
                 />
                 <div>
                   <h2 className="text-xl font-semibold capitalize">{title}</h2>
+                  <h4>{company}</h4>
                 </div>
                 <p className="text-primary md:ml-auto">{dollerAmount}</p>
               </CardContent>
