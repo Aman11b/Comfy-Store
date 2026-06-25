@@ -3,6 +3,7 @@ import FormInput from "./FormInput";
 import { Button } from "./ui/button";
 import type { ProductsResponseWithParams } from "../utils";
 import FormSelect from "./FormSelect";
+import FormRange from "./FormRange";
 
 export default function Filters() {
   const { meta, params } = useLoaderData() as ProductsResponseWithParams;
@@ -37,7 +38,8 @@ export default function Filters() {
         options={["a-z", "z-a", "high", "low"]}
         defaultValue={order}
       />
-
+      {/* Price */}
+      <FormRange label="price" name="price" defaultValue={price} />
       <Button type="submit" size="sm" className="self-end mb-2">
         Search
       </Button>
