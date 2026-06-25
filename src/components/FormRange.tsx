@@ -1,7 +1,7 @@
-import { formatAsDollars } from "@/utils";
+import { formatAsDollars } from "../utils";
 import { useState } from "react";
 
-import { Label } from "@/components/ui/label";
+import { Label } from "../components/ui/label";
 import { Slider } from "./ui/slider";
 
 type FormRangeProps = {
