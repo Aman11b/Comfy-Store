@@ -12,6 +12,7 @@ import { Separator } from "../components/ui/separator";
 import { type LoaderFunction } from "react-router-dom";
 
 import { SelectProductAmount, SelectProductColor } from "../components";
+import { Mode } from "../components/SelectProductAmount";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -35,11 +36,11 @@ function SingleProduct() {
   return (
     <section>
       <div className="flex gap-x-2 h-6 items-center">
-        <Button asChild varient="link" size="sm">
+        <Button asChild variant="link" size="sm">
           <Link to="/">Home</Link>
         </Button>
         <Separator orientation="vertical" />
-        <Button asChild varient="link" size="sm">
+        <Button asChild variant="link" size="sm">
           <Link to="/products">Products</Link>
         </Button>
       </div>
@@ -66,7 +67,11 @@ function SingleProduct() {
             setProductColor={setProductColor}
           />
           {/* amuont */}
-          <SelectProductAmount />
+          <SelectProductAmount
+            mode={Mode}
+            amount={amount}
+            setAmoun={setAmount}
+          />
           {/* cart byutton */}
           <Button size="lg" className="mt-10" onClick={addToCart}>
             Add to cart
