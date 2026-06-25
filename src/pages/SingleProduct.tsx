@@ -4,15 +4,14 @@ import {
   customFetch,
   formatAsDollars,
   type SingleProductResponse,
-} from "@/utils";
+} from "../utils";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
 
 import { type LoaderFunction } from "react-router-dom";
 
 import { SelectProductAmount, SelectProductColor } from "../components";
-import { Slice } from "lucide-react";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -61,7 +60,11 @@ function SingleProduct() {
           </p>
           <p className="mt-6 leading-8">{description}</p>
           {/* colors */}
-          <SelectProductColor />
+          <SelectProductColor
+            colors={colors}
+            productColor={productColor}
+            setProductColor={setProductColor}
+          />
           {/* amuont */}
           <SelectProductAmount />
           {/* cart byutton */}
