@@ -16,7 +16,7 @@ export default function CartItemsList() {
         return (
           <Card
             key={cardID}
-            className="flex flex-col gap-y-4 justify-between sm:flex-row flex-wrap p-6 mb-8"
+            className="flex flex-col gap-y-4 justify-between items-center sm:flex-row flex-wrap p-6 mb-8"
           >
             <FirstColumn image={image} title={title} />
             <SecondColumn
