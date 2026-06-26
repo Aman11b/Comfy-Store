@@ -4,6 +4,7 @@ import {
   customFetch,
   formatAsDollars,
   type SingleProductResponse,
+  type CartItem,
 } from "../utils";
 import { useState } from "react";
 import { Button } from "../components/ui/button";
@@ -13,6 +14,8 @@ import { type LoaderFunction } from "react-router-dom";
 
 import { SelectProductAmount, SelectProductColor } from "../components";
 import { Mode } from "../components/SelectProductAmount";
+import { useAppDispatch } from "../hooks";
+import { addItem } from "../features/cart/cartSlice";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -30,8 +33,19 @@ function SingleProduct() {
   const dollersAmount = formatAsDollars(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
+  const dispath = useAppDispatch();
+  const cartProduct: CartItem = {
+    cartID: product.id + productColor,
+    productID: product.id,
+    image,
+    title,
+    price,
+    amount,
+    productColor,
+    company,
+  };
   const addToCart = () => {
-    console.log("add to cart");
+    dispath(addItem(cartProduct));
   };
   return (
     <section>
@@ -45,12 +59,12 @@ function SingleProduct() {
         </Button>
       </div>
       {/* products */}
-      <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-26">
+      <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-26">
         {/* image */}
         <img
           src={image}
           alt={title}
-          className="w-96 h-96 object-cover rounded-lg lg:w-full"
+          className="w-96 h-96 object-cover rounded-lg lg:w-full border-6 border-red-700"
         />
         {/* product info*/}
         <div>
@@ -68,9 +82,9 @@ function SingleProduct() {
           />
           {/* amuont */}
           <SelectProductAmount
-            mode={Mode}
+            mode={Mode.SingleProduct}
             amount={amount}
-            setAmoun={setAmount}
+            setAmount={setAmount}
           />
           {/* cart byutton */}
           <Button size="lg" className="mt-10" onClick={addToCart}>
