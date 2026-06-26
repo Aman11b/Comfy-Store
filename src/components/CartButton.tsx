@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../hooks";
+import { Button } from "./ui/button";
 
 export default function CartButton() {
   const numItemInCart = useAppSelector(
