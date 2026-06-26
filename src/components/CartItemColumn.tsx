@@ -1,7 +1,7 @@
-import { formatAsDollars } from "@/utils";
-import { useAppDispatch } from "@/hooks";
+import { formatAsDollars } from "../utils";
+import { useAppDispatch } from "../hooks";
 import { Button } from "./ui/button";
-import { editItem, removeItem } from "@/features/cart/cartSlice";
+import { editItem, removeItem } from "../features/cart/cartSlice";
 import SelectProductAmount from "./SelectProductAmount";
 import { Mode } from "./SelectProductAmount";
 
