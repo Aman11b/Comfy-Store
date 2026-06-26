@@ -4,15 +4,33 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Form, Link, type ActionFunction } from "react-router-dom";
+import { Form, Link, redirect, type ActionFunction } from "react-router-dom";
 import { FormInput } from "../components";
 import { Button } from "../components/ui/button";
+import { customFetch } from "../utils";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
-export const action: ActionFunction = async ({ request }): Promise<null> => {
+export const action: ActionFunction = async ({
+  request,
+}): Promise<Response | null> => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
-  return null;
+  try {
+    await customFetch.post("/auth/local/register", data);
+
+    toast("Registered");
+    return redirect("/login");
+  } catch (error) {
+    console.log(error);
+
+    const errorMsg =
+      error instanceof AxiosError
+        ? error.response?.data.error.message
+        : "Registration Failed";
+    toast(errorMsg);
+    return null;
+  }
 };
 
 function Register() {
@@ -24,9 +42,9 @@ function Register() {
         </CardHeader>
         <CardContent>
           <Form method="post">
-            <FormInput type="text" name="username" defaultValue="test" />
-            <FormInput type="email" name="email" defaultValue="test@test.com" />
-            <FormInput type="password" name="password" defaultValue="secret" />
+            <FormInput type="text" name="username" />
+            <FormInput type="email" name="email" />
+            <FormInput type="password" name="password" />
             <Button type="submit" className="w-full mt-4">
               Submit
             </Button>
