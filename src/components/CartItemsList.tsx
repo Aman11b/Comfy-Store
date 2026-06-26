@@ -1,5 +1,34 @@
-import React from "react";
-
+import { useAppSelector } from "../hooks";
+import { Card } from "./ui/card";
+import {
+  FirstColumn,
+  SecondColumn,
+  ThirdColumn,
+  FourthColumn,
+} from "./CartItemColumn";
 export default function CartItemsList() {
-  return <div>cartItemsList</div>;
+  const cartItems = useAppSelector((state) => state.cartState.cartItems);
+  return (
+    <div>
+      {cartItems.map((cartItem) => {
+        const { cardID, title, price, image, amount, company, productColor } =
+          cartItem;
+        return (
+          <Card
+            key={cardID}
+            className="flex flex-col gap-y-4 justify-between sm:flex-row flex-wrap p-6 mb-8"
+          >
+            <FirstColumn image={image} title={title} />
+            <SecondColumn
+              title={title}
+              company={company}
+              productColor={productColor}
+            />
+            <ThirdColumn amount={amount} cardID={cardID} />
+            <FourthColumn price={price} />
+          </Card>
+        );
+      })}
+    </div>
+  );
 }

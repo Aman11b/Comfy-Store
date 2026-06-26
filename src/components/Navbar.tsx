@@ -1,4 +1,5 @@
 import { CartButton, LinkDropdown, Logo, ModeToggle, NavLinks } from ".";
+import { Separator } from "./ui/separator";
 
 export default function Navbar() {
   return (
@@ -8,6 +9,7 @@ export default function Navbar() {
         <LinkDropdown />
         <NavLinks />
       </div>
+      <Separator />
       <div className=" align-element flex justify-center items-center gap-x-4">
         <ModeToggle />
         <CartButton />

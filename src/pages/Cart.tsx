@@ -5,7 +5,6 @@ import { Button } from "../components/ui/button";
 import { SectionTitle } from "../components";
 import CartItemsList from "../components/CartItemsList";
 import CartTotal from "../components/CartTotal";
-import { Separator } from "../components/ui/separator";
 
 function Cart() {
   // temp
