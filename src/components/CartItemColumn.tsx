@@ -49,10 +49,34 @@ export const SecondColumn = ({
   );
 };
 
-export const ThirdColumn = () => {
-  return <h4>Third Column</h4>;
+export const ThirdColumn = ({
+  amount,
+  cartID,
+}: {
+  amount: number;
+  cartID: string;
+}) => {
+  const dispatch = useAppDispatch();
+  const removeItemFromCart = () => {
+    dispatch(removeItem(cartID));
+  };
+  const setAmount = (value: number) => {
+    dispatch(editItem({ cartID, amount: value }));
+  };
+  return (
+    <div>
+      <SelectProductAmount
+        amount={amount}
+        setAmount={setAmount}
+        mode={Mode.CartItem}
+      />
+      <Button variant="link" className="-ml-4" onClick={removeItemFromCart}>
+        Remove
+      </Button>
+    </div>
+  );
 };
 
-export const FourthColumn = () => {
-  return <h4>Fourth Column</h4>;
+export const FourthColumn = ({ price }: { price: string }) => {
+  return <p className="font-medium sm:ml-auto">{formatAsDollars(price)}</p>;
 };

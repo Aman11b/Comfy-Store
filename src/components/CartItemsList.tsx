@@ -11,12 +11,12 @@ export default function CartItemsList() {
   return (
     <div>
       {cartItems.map((cartItem) => {
-        const { cardID, title, price, image, amount, company, productColor } =
+        const { cartID, title, price, image, amount, company, productColor } =
           cartItem;
         return (
           <Card
-            key={cardID}
-            className="flex flex-col gap-y-4 justify-between items-center sm:flex-row flex-wrap p-6 mb-8"
+            key={cartID}
+            className="flex flex-col gap-y-4 items-center justify-between sm:flex-row flex-wrap p-6 mb-8"
           >
             <FirstColumn image={image} title={title} />
             <SecondColumn
@@ -24,7 +24,7 @@ export default function CartItemsList() {
               company={company}
               productColor={productColor}
             />
-            <ThirdColumn amount={amount} cardID={cardID} />
+            <ThirdColumn amount={amount} cartID={cartID} />
             <FourthColumn price={price} />
           </Card>
         );
