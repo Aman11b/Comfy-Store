@@ -1,13 +1,19 @@
-import type { LoaderFunction } from "react-router-dom";
+import { redirect, type LoaderFunction } from "react-router-dom";
 import { CheckoutForm, SectionTitle } from "../components";
 import CartTotal from "../components/CartTotal";
 import { useAppSelector } from "../hooks";
 import type { ReduxStore } from "../store";
+import { toast } from "sonner";
 
 export const loader =
   (store: ReduxStore): LoaderFunction =>
-  async (): Promise<null> => {
-    console.log(store);
+  async (): Promise<null | Response> => {
+    const user = store.getState().userState.user;
+    if (!user) {
+      toast("Please login to continue");
+      return redirect("/login");
+    }
+
     return null;
   };
 
