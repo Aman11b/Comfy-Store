@@ -5,9 +5,10 @@ import SubmitBtn from "./SubmitBtn";
 import { toast } from "sonner";
 
 import { customFetch, formatAsDollars, type Checkout } from "../utils";
-import { resume } from "react-dom/server";
+
 import { clearCart } from "../features/cart/cartSlice";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const action =
   (store: ReduxStore): ActionFunction =>
   async ({ request }): Promise<null | Response> => {
