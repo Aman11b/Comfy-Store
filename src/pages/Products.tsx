@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Filters, ProductsContainer, PaginationContainer } from "../components";
 import { customFetch, type ProductsResponseWithParams } from "../utils";
 import { type LoaderFunction } from "react-router-dom";
