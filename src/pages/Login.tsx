@@ -1,4 +1,10 @@
-import { Form, Link, useNavigate } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useNavigate,
+  type ActionFunction,
+} from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 import { Button } from "../components/ui/button";
 import {
@@ -12,6 +18,28 @@ import type { AxiosResponse } from "axios";
 import { customFetch } from "../utils";
 import { loginUser } from "../features/user/userSlice";
 import { toast } from "sonner";
+import type { ReduxStore } from "../store";
+
+export const action =
+  (store: ReduxStore): ActionFunction =>
+  async ({ request }): Promise<Response | null> => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      const response: AxiosResponse = await customFetch.post(
+        "/auth/local",
+        data,
+      );
+      const username = response.data.user.username;
+      const jwt = response.data.jwt;
+      store.dispatch(loginUser({ username, jwt }));
+      return redirect("/");
+    } catch (error) {
+      console.log(error);
+      toast("Login Failed");
+      return null;
+    }
+  };
 
 function Login() {
   const dispatch = useAppDispatch();
